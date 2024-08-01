@@ -9,6 +9,9 @@ spring:
       discovery:
         locator:
           enabled: true
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration
   security:
     user:
       name: user
