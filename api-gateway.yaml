@@ -4,20 +4,42 @@ server:
 spring:
   application:
     name: api-gateway
-  main:
-    web-application-type: reactive
-    allow-bean-definition-overriding: true
-
   cloud:
     gateway:
       discovery:
         locator:
           enabled: true
+  security:
+    user:
+      name: user
+      password: password
+    oauth2:
+      authorizationserver:
+        client:
+          oidc-client:
+            registration:
+              client-id: "oidc-client"
+              client-secret: "{noop}secret"
+              client-authentication-methods:
+                - "client_secret_basic"
+              authorization-grant-types:
+                - "authorization_code"
+                - "refresh_token"
+              redirect-uris:
+                - "https://oauthdebugger.com/debug"
+              post-logout-redirect-uris:
+                - "http://127.0.0.1:8080/"
+              scopes:
+                - "openid"
+                - "profile"
+            require-authorization-consent: true
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
 
-  logging:
-    level:
-      org.springframework.security: ERROR
+logging:
+  level:
+    org.springframework.security: trace
+
+
