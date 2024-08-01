@@ -9,40 +9,40 @@ spring:
       discovery:
         locator:
           enabled: true
-  autoconfigure:
-    exclude:
-      - org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration
-  security:
-    user:
-      name: user
-      password: password
-    oauth2:
-      authorizationserver:
-        client:
-          oidc-client:
-            registration:
-              client-id: "oidc-client"
-              client-secret: "{noop}secret"
-              client-authentication-methods:
-                - "client_secret_basic"
-              authorization-grant-types:
-                - "authorization_code"
-                - "refresh_token"
-              redirect-uris:
-                - "https://oauthdebugger.com/debug"
-              post-logout-redirect-uris:
-                - "http://127.0.0.1:8080/"
-              scopes:
-                - "openid"
-                - "profile"
-            require-authorization-consent: true
+#  autoconfigure:
+#    exclude:
+#      - org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration
+#  security:
+#    user:
+#      name: user
+#      password: password
+#    oauth2:
+#      authorizationserver:
+#        client:
+#          oidc-client:
+#            registration:
+#              client-id: "oidc-client"
+#              client-secret: "{noop}secret"
+#              client-authentication-methods:
+#                - "client_secret_basic"
+#              authorization-grant-types:
+#                - "authorization_code"
+#                - "refresh_token"
+#              redirect-uris:
+#                - "https://oauthdebugger.com/debug"
+#              post-logout-redirect-uris:
+#                - "http://127.0.0.1:8080/"
+#              scopes:
+#                - "openid"
+#                - "profile"
+#            require-authorization-consent: true
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
 
-logging:
-  level:
-    org.springframework.security: trace
+#logging:
+#  level:
+#    org.springframework.security: trace
 
 
